@@ -1,4 +1,4 @@
-global dict : table[addr] of set[string] = table();
+global test : table[addr] of set[string] = table();
 event http_header (c: connection, is_orig: bool, name: string, value: string)
 {
     if(name=="USER-AGENT")
