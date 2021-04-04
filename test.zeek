@@ -3,16 +3,16 @@ event http_header (c: connection, is_orig: bool, name: string, value: string)
 {
     if(name=="USER-AGENT")
     {
-        if(source_ip in test)
+        if(c$id$orig_h in test)
         {
-            if(to_lower(value) !in test[source_ip])
+            if(to_lower(value) !in test[c$id$orig_h])
             {
-                add test[source_ip][to_lower(value)];
+                add test[c$id$orig_h][to_lower(value)];
             }
         }
         else
         {
-            test[source_ip]=set(to_lower(value));
+            test[c$id$orig_h]=set(to_lower(value));
         }
     }
 }
